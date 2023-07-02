@@ -1,0 +1,44 @@
+
+
+
+
+   27  docker run -itd --name mysqldb --restart unless-stopped -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password123 -e MYSQL_DATABASE=springboot_mysql_example mysql
+   29  docker exec -it mysqldb /bin/bash
+   35  docker inspect mysqldb | grep IPAddress
+   36  docker inspect mysqldb
+   37  clear
+   38  ping 172.17.0.2
+   39  cd spring-boot-mysql-example/
+   40  ls
+   41  cd src/main/resources/
+   42  vi application.propertie
+   46  cd spring-boot-mysql-example
+   48  mvn install
+   50  vi src/main/resources/application.properties
+   51  apt-get install mysql-client
+   52  mysql --host=172.17.0.2 --port=3306 -uroot -ppassword123
+   53  vi pom.xml
+   61  vi Dockerfile
+   62  docker images
+   63  docker build -t springbootdocker .
+   64  docker images
+   65  docker run -itd  -p 8500:8080 --name sbdc springbootdocker
+   81  rm -rf  target/
+   83  cd src/main/resources/
+   84  vi application.propertie
+
+   87  mvn install
+   91  DBIP=172.17.0.2 DBPORT=3306 DBUSER=root DBPASSWD=password123 mvn install
+   94  vi Dockerfile
+   95  docker build -t spdimg
+   96  docker build -t spdimg .
+   97  docker images
+   98  docker run -itd --restart ubless-stopped -p 6773:8080 --name sbdc spdimg
+   99  docker run -itd --restart unless-stopped -p 6773:8080 --name sbdc spdimg
+  103  docker ps -a
+  104  docker rm d868cfc1bc8b
+  105  docker stop d868cfc1bc8b
+  106  docker rm d868cfc1bc8b
+  107  docker run -itd --restart unless-stopped -p 6773:8080 --name sbdc -e DBIP=172.17.0.2 -e DBPORT=3306 -e DBUSER=root -e DBPASSWD=password123  spdimg
+  108  docker ps -a
+  109  history
